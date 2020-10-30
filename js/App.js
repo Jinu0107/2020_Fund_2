@@ -273,6 +273,7 @@ class App {
             }
             this.datas.push(obj);
             this.loadFundRegister();
+
             log(this.datas);
         });
     }
@@ -339,6 +340,7 @@ class App {
             let money = $('.popup_fund_money').val().trim();
             let url = this.$canvas.toDataURL();
 
+            this.$popup.find("input").val("");
             if (num == "" || name == "" || user == "" || money == "" || money <= 0 || !this.draing_ok) {
                 alert("값이 잘못되었거나 비어있습니다.");
                 return;
@@ -380,6 +382,7 @@ class App {
         this.$popup.on("input", ".popup_fund_money", (e) => {
             let max = $(e.currentTarget).data('max');
             let value = e.currentTarget.value;
+            log(this.removeComma(value));
             if (max <= this.removeComma(value)) value = max;
             value = (value.toString().replaceAll(/[^0-9]/g, "") * 1).toLocaleString();
             e.currentTarget.value = value;
@@ -391,10 +394,10 @@ class App {
     setInvestorListEvent() {
         $('.investor_pagination_group').on("click", ".num", (e) => {
             let page = e.currentTarget.dataset.page;
+            if (page == 'no') return;
             this.$tbody.data('page', page);
             this.loadInvestor();
         });
-
         $(document).on("click", ".in_btn", (e) => {
             let num = e.currentTarget.dataset.num;
             let user = e.currentTarget.dataset.user;
