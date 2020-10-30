@@ -193,6 +193,11 @@ class App {
                 let dom = this.makeInvestorDom(x);
                 this.$tbody.append(dom);
             });
+            view_list.forEach((item, idx) => {
+                setTimeout(() => {
+                    this.$tbody.find("tr").eq(idx).find(".graph").animate({ "width": item.percent >= 100 ? 100 + '%' : item.percent + '%' }, 2000);
+                }, 300);
+            });
             this.$tbody.fadeIn();
         }, 500);
     }
@@ -203,7 +208,8 @@ class App {
                             <td class="text_over color_333 fw_500" title="${x.xss_name}">${x.xss_name}</td>
                             <td class="text_over color_333 fw_500" title="${x.xss_user}">${x.xss_user}</td>
                             <td class="text_over color_333 fw_500" title="${x.str_money}원">${x.str_money}원</td>
-                            <td class="text_over color_333 fw_500" title="${x.percent}%">${x.percent}%</td>
+                            <td class="text_over color_333 fw_500" title="${x.percent}%">${x.percent}%
+                            <div class="graph"></div></td>
                             <td class="text_over color_333 fw_500">
                                 <div class="in_btn" data-num="${x.number}" data-user="${x.xss_user}">투자펀드계약서</div>
                             </td>

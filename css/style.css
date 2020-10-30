@@ -800,7 +800,11 @@ header .nav>div.on, header .nav>div:hover {
 }
 
 .investor_list table td {
-    padding: 25px 0;
+    padding: 25px 20px;
+}
+
+.investor_list table tr {
+    position: relative;
 }
 
 .investor_list table .in_btn {
@@ -849,6 +853,15 @@ header .nav>div.on, header .nav>div:hover {
     position: absolute;
     bottom: 0;
 }
+
+.investor_list .graph {
+    margin-top: 5px;
+    width : 0;
+    background-color: #1588a9;
+    height: 3px;
+}
+
+
 
 /* 투자자목록 끝 */
 
@@ -981,5 +994,7 @@ footer {
     margin-top: 10px;
     border: 1px solid #1588a9;
 }
+
+
 
 /* 팝업 끝 */
